@@ -11,8 +11,11 @@ namespace Misison12GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private ApplicationContext contextInfo { get; set; }
+
+        public HomeController(ApplicationContext data)
         {
+            contextInfo = data;
         }
 
         public IActionResult Index()
@@ -20,11 +23,17 @@ namespace Misison12GroupProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUp()
         {
-            return View();
+            var AppointmentsList = contextInfo.appointments
+                .Where(a => a.Taken == false)
+                .ToList();
+            return View(AppointmentsList);
         }
 
+
+        
         public IActionResult Appointments()
         {
             return View();

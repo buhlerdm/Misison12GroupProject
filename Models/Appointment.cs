@@ -12,7 +12,7 @@ namespace Misison12GroupProject.Models
         [Required]
         public int AppointmentID { get; set; }
 
-        public string Day;
+        public string Day { get; set; }
 
         public string Time { get; set; }
 

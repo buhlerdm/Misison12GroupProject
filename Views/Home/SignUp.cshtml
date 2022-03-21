@@ -2,7 +2,10 @@
 @{
     ViewData["Title"] = "SignUp";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+
+@model IEnumerable<Appointment>
 
 <h1 class="text-center">Sign Up</h1>
 
@@ -24,15 +27,26 @@
 
     <tbody class="text-center">
         <tr>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
-        </tr>
+            @foreach (var x in Model)
+            {
 
+                @*<td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>
+            <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">8:00 AM</a></td>*@
+
+
+                @if (x.Time == "Sunday")
+                {
+                    <td class="btn bg-dark text-white"><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">@x.Time</a></td>
+
+                }
+
+            
+            }
         <tr>
             <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">9:00 AM</a></td>
             <td><a class="btn bg-dark text-white" asp-controller="Home" asp-action="AddAppointment">9:00 AM</a></td>
@@ -155,3 +169,4 @@
     </tbody>
 
 </table>
+
