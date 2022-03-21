@@ -16,6 +16,7 @@ namespace Misison12GroupProject.Controllers
         public HomeController(ApplicationContext data)
         {
             contextInfo = data;
+
         }
 
         public IActionResult Index()
@@ -49,6 +50,13 @@ namespace Misison12GroupProject.Controllers
             var x = new GroupInfo();
 
             return View(x);
+
+        }
+
+        [HttpPost]
+        public IActionResult AddAppointment(Appointment apt)
+        {
+            return View("Confirmation", apt);
         }
 
     }
