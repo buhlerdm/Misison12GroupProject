@@ -39,9 +39,16 @@ namespace Misison12GroupProject.Controllers
             return View();
         }
 
-        public IActionResult AddAppointment()
+        
+        public IActionResult AddAppointment(int id)
         {
-            return View();
+            ViewBag.id = id;
+
+            ViewBag.appointments = contextInfo.appointments.ToList();
+
+            var x = new GroupInfo();
+
+            return View(x);
         }
 
     }

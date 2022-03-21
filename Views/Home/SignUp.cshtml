@@ -23,7 +23,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Sunday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -38,7 +38,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Monday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -53,7 +53,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Tuesday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -68,7 +68,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Wednesday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -83,7 +83,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Thursday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -98,7 +98,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Friday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
@@ -113,7 +113,7 @@
                     @foreach (var x in Model.Where(x => x.Day == "Saturday"))
                     {
                         <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment">@x.Time</a>
+                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                         </tr>
                     }
             </table>
