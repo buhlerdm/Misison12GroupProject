@@ -11,8 +11,10 @@ namespace Misison12GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private ApplicationContext appContext { get; set; }
+        public HomeController(ApplicationContext app)
         {
+            appContext = app;
         }
 
         public IActionResult Index()
@@ -30,9 +32,18 @@ namespace Misison12GroupProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult AddAppointment()
         {
+            ViewBag.group = appContext.group.ToList();
+
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAppointment(Appointment apt)
+        {
+            return View("Confirmation", apt);
         }
 
     }
