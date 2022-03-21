@@ -55,6 +55,9 @@ namespace Misison12GroupProject
 
             app.UseEndpoints(endpoints =>
             {
+            endpoints.MapControllerRoute("appointmentID", "ID{AppointmentID}", new { Controller = "Home", action = "AddAppointment" });
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

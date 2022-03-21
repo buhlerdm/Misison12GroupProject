@@ -11,10 +11,12 @@ namespace Misison12GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationContext appContext { get; set; }
-        public HomeController(ApplicationContext app)
+        private ApplicationContext contextInfo { get; set; }
+
+        public HomeController(ApplicationContext data)
         {
-            appContext = app;
+            contextInfo = data;
+
         }
 
         public IActionResult Index()
@@ -22,22 +24,33 @@ namespace Misison12GroupProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUp()
         {
-            return View();
+            var AppointmentsList = contextInfo.appointments
+                .Where(a => a.Taken == false)
+                .ToList();
+            return View(AppointmentsList);
         }
 
+
+        
         public IActionResult Appointments()
         {
             return View();
         }
 
-        [HttpGet]
-        public IActionResult AddAppointment()
+        
+        public IActionResult AddAppointment(int id)
         {
-            ViewBag.group = appContext.group.ToList();
+            ViewBag.id = id;
 
-            return View();
+            ViewBag.appointments = contextInfo.appointments.ToList();
+
+            var x = new GroupInfo();
+
+            return View(x);
+
         }
 
         [HttpPost]
