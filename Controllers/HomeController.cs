@@ -56,7 +56,10 @@ namespace Misison12GroupProject.Controllers
         
         public IActionResult Appointments()
         {
-            return View();
+            ViewBag.APP = contextInfo.appointments.ToList();
+
+            var appointments = contextInfo.group.ToList();
+            return View(appointments);
         }
 
         [HttpGet]
@@ -75,6 +78,7 @@ namespace Misison12GroupProject.Controllers
         [HttpPost]
         public IActionResult AddAppointment(GroupInfo gi)
         {
+
             if (ModelState.IsValid)
             {
                 contextInfo.Add(gi);
@@ -88,6 +92,7 @@ namespace Misison12GroupProject.Controllers
             }
             
         }
+
 
     }
 }
