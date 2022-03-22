@@ -26,7 +26,7 @@ namespace Misison12GroupProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult SignUp(int id)
         {
             var AppointmentsList = contextInfo.appointments
                 .Where(a => a.Taken == false)
@@ -34,32 +34,25 @@ namespace Misison12GroupProject.Controllers
             return View(AppointmentsList);
         }
 
-        //public IActionResult SignUp(int id)
-        //{
-        //    return View(new AppointmentsViewModel
-        //    {
-        //        Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
-        //    });
-        //}
 
-        [HttpPost]
-        public IActionResult SignUp(AppointmentsViewModel avm, int id)
-        {
-            if (ModelState.IsValid)
-            {
-                contextInfo.appointments.Single(x => x.AppointmentID == id).Taken = true;
-                contextInfo.appointments.Add(avm.Appointment);
-                contextInfo.SaveChanges();
-                return RedirectToAction("Confirmation");
-            }
-            else
-            {
-                return View(new AppointmentsViewModel
-                {
-                    Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
-                });
-            }
-        }
+        //[HttpPost]
+        //public IActionResult SignUp(AppointmentsViewModel avm, int id)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        contextInfo.appointments.Single(x => x.AppointmentID == id).Taken = true;
+        //        contextInfo.appointments.Add(avm.Appointment);
+        //        contextInfo.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return View(new AppointmentsViewModel
+        //        {
+        //            Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
+        //        });
+        //    }
+        //}
         
         public IActionResult Appointments()
         {
@@ -86,7 +79,7 @@ namespace Misison12GroupProject.Controllers
             {
                 contextInfo.Add(gi);
                 contextInfo.SaveChanges();
-                return View("Confirmation");
+                return View("Confirmation", gi);
             }
             else // If Invalid
             {

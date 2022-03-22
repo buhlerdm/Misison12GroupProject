@@ -3,7 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model Misison12GroupProject.Models.ViewModels.AppointmentsViewModel
+@*@model Misison12GroupProject.Models.ViewModels.AppointmentsViewModel*@
+@model GroupInfo
 
 <form method="post">
 
@@ -13,24 +14,24 @@
     <h4>Add Appointment</h4>
 
     <div class="form-group">
-        <label asp-for="@Model.GroupInfo.GroupName">Group Name:</label><input asp-for="@Model.GroupInfo.GroupName" class="form-control" />
+        <label asp-for="GroupName">Group Name:</label><input asp-for="GroupName" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.GroupInfo.GroupSize">Group Size:</label><input asp-for="@Model.GroupInfo.GroupSize" class="form-control" />
+        <label asp-for="GroupSize">Group Size:</label><input asp-for="GroupSize" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.GroupInfo.email">Email:</label><input asp-for="@Model.GroupInfo.email" class="form-control" />
+        <label asp-for="email">Email:</label><input asp-for="email" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.GroupInfo.phone">Phone Number:</label><input asp-for="@Model.GroupInfo.phone" class="form-control" />
+        <label asp-for="phone">Phone Number:</label><input asp-for="phone" class="form-control" />
     </div>
 
     <div class="float-end">
         <input class="btn btn-info" type="submit" value="Save Appointment" />
-        <input type="hidden" name="id" value="@Model.Appointment.AppointmentID" />
+        @*<input type="hidden" name="id" value="@Model.Appointment.AppointmentID" />*@
     </div>
 
 </form>
