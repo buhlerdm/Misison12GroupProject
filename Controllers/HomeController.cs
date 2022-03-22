@@ -37,7 +37,8 @@ namespace Misison12GroupProject.Controllers
         
         public IActionResult Appointments()
         {
-            return View();
+            var appointments = contextInfo.group.ToList();
+            return View(appointments);
         }
 
         
@@ -57,8 +58,7 @@ namespace Misison12GroupProject.Controllers
         public IActionResult AddAppointment(Appointment apt)
         {
             return View("Confirmation", apt);
-        }
-
+        } 
     }
 }
 
