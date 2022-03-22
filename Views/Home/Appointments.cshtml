@@ -4,5 +4,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model List<GroupInfo>
+@using Misison12GroupProject.Models;
+
 <h1>Appointments</h1>
 
+<table class="table table-bordered">
+
+    <thead>
+        <td>Group Name</td>
+        <td>Group Size</td>
+        <td>Email</td>
+        <td>Phone Number</td>
+        <td>Appointment Day</td>
+        <td>Appointment Time</td>    
+    </thead>
+
+    <tbody>
+        @foreach(var x in Model)
+            {
+        <tr>
+            <td>@x.GroupName</td>
+            <td>@x.GroupSize</td>
+            <td>@x.email</td>
+            <td>@x.phone</td>
+            @foreach (Appointment a in ViewBag.APP)
+            {
+                if (a.AppointmentID == x.AppointmentID)
+                {
+                    <td>@a.Day</td>
+                    <td>@a.Time</td>
+                }
+            }
+        </tr>
+            }
+
+
+    </tbody>
+
+</table>
