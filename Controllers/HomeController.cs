@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Misison12GroupProject.Models;
+using Misison12GroupProject.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,7 +34,32 @@ namespace Misison12GroupProject.Controllers
             return View(AppointmentsList);
         }
 
+        //public IActionResult SignUp(int id)
+        //{
+        //    return View(new AppointmentsViewModel
+        //    {
+        //        Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
+        //    });
+        //}
 
+        [HttpPost]
+        public IActionResult SignUp(AppointmentsViewModel avm, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                contextInfo.appointments.Single(x => x.AppointmentID == id).Taken = true;
+                contextInfo.appointments.Add(avm.Appointment);
+                contextInfo.SaveChanges();
+                return RedirectToAction("Confirmation");
+            }
+            else
+            {
+                return View(new AppointmentsViewModel
+                {
+                    Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
+                });
+            }
+        }
         
         public IActionResult Appointments()
         {
@@ -43,7 +69,7 @@ namespace Misison12GroupProject.Controllers
             return View(appointments);
         }
 
-        
+        [HttpGet]
         public IActionResult AddAppointment(int id)
         {
             ViewBag.id = id;
@@ -57,10 +83,24 @@ namespace Misison12GroupProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddAppointment(Appointment apt)
+        public IActionResult AddAppointment(GroupInfo gi)
         {
-            return View("Confirmation", apt);
-        } 
+
+            if (ModelState.IsValid)
+            {
+                contextInfo.Add(gi);
+                contextInfo.SaveChanges();
+                return View("Confirmation");
+            }
+            else // If Invalid
+            {
+                ViewBag.group = contextInfo.group.ToList();
+                return View();
+            }
+            
+        }
+
+
     }
 }
 

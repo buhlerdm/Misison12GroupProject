@@ -684,15 +684,18 @@ namespace Misison12GroupProject.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("GroupName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("phone")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("GroupId");
@@ -700,17 +703,6 @@ namespace Misison12GroupProject.Migrations
                     b.HasIndex("AppointmentID");
 
                     b.ToTable("group");
-
-                    b.HasData(
-                        new
-                        {
-                            GroupId = 1,
-                            AppointmentID = 1,
-                            GroupName = "Group 10",
-                            GroupSize = 4,
-                            email = "dmitchellbuhler@gmail.com",
-                            phone = "425-698-3436"
-                        });
                 });
 
             modelBuilder.Entity("Misison12GroupProject.Models.GroupInfo", b =>
