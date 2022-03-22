@@ -37,6 +37,8 @@ namespace Misison12GroupProject.Controllers
         
         public IActionResult Appointments()
         {
+            ViewBag.APP = contextInfo.appointments.ToList();
+
             var appointments = contextInfo.group.ToList();
             return View(appointments);
         }
