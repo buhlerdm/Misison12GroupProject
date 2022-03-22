@@ -35,24 +35,7 @@ namespace Misison12GroupProject.Controllers
         }
 
 
-        //[HttpPost]
-        //public IActionResult SignUp(AppointmentsViewModel avm, int id)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        contextInfo.appointments.Single(x => x.AppointmentID == id).Taken = true;
-        //        contextInfo.appointments.Add(avm.Appointment);
-        //        contextInfo.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        return View(new AppointmentsViewModel
-        //        {
-        //            Appointment = contextInfo.appointments.Single(x => x.AppointmentID == id)
-        //        });
-        //    }
-        //}
+    
         
         public IActionResult Appointments()
         {
@@ -83,6 +66,14 @@ namespace Misison12GroupProject.Controllers
             {
                 contextInfo.Add(gi);
                 contextInfo.SaveChanges();
+
+                List<Appointment> results = contextInfo.appointments.Where(a => a.AppointmentID == gi.AppointmentID).ToList();
+                foreach(Appointment app in results)
+                {
+                    app.Taken = true;
+                }
+                contextInfo.SaveChanges();
+
                 return View("Confirmation", gi);
             }
             else // If Invalid
