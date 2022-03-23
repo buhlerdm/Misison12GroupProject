@@ -34,9 +34,6 @@ namespace Misison12GroupProject.Controllers
             return View(AppointmentsList);
         }
 
-
-    
-        
         public IActionResult Appointments()
         {
             ViewBag.APP = contextInfo.appointments.ToList();
@@ -83,6 +80,54 @@ namespace Misison12GroupProject.Controllers
             }
             
         }
+
+
+        public IActionResult Edit(int GroupId)
+        {
+            ViewBag.appointments = contextInfo.appointments.ToList();
+
+            var group = contextInfo.group.Single(x => x.GroupId == GroupId);
+            
+
+            return View("Edit", group);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(GroupInfo changedGroup)
+        {
+            contextInfo.Update(changedGroup);
+            contextInfo.SaveChanges();
+
+            return RedirectToAction("Appointments");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int GroupId)
+        {
+
+            var group = contextInfo.group.Single(x => x.GroupId == GroupId);
+
+
+            return View(group);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(GroupInfo groupDeleted)
+        { 
+            contextInfo.group.Remove(groupDeleted);
+            contextInfo.SaveChanges();
+
+
+            List<Appointment> results = contextInfo.appointments.Where(a => a.AppointmentID == groupDeleted.AppointmentID).ToList();
+            foreach (Appointment app in results)
+            {
+                app.Taken = false;
+            }
+            contextInfo.SaveChanges();
+
+            return RedirectToAction("Appointments");
+        }
+
 
 
     }

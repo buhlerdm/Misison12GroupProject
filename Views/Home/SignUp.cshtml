@@ -7,118 +7,138 @@
 
 @model IEnumerable<Appointment>
 
+<style>
+    #outer-div {
+        width: 100%;
+        text-align: center;
+            
+    }
+
+    #inner-div {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 3px;
+            
+    }
+</style>
+
+
+
 <h1 class="text-center">Sign Up</h1><br />
 
 
-<div class="container text-center">
-    <div class="row" style="text-align: center">
+<div id="outer-div">
+
+    <div id="inner-div">
+        <div class="row" style="text-align: center">
 
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Sunday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Sunday"))
-                    {
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Sunday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Sunday"))
+                        {
+                                <tr>
+                                    <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                                </tr>
+                        }
+                </table>
+            </div>
+
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Monday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Monday"))
+                        {
                             <tr>
                                 <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
                             </tr>
-                    }
-            </table>
-        </div>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Monday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Monday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
-        </div>
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Tuesday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Tuesday"))
+                        {
+                            <tr>
+                                <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                            </tr>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Tuesday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Tuesday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
-        </div>
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Wednesday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Wednesday"))
+                        {
+                            <tr>
+                                <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                            </tr>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Wednesday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Wednesday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
-        </div>
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Thursday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Thursday"))
+                        {
+                            <tr>
+                                <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                            </tr>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Thursday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Thursday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
-        </div>
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Friday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Friday"))
+                        {
+                            <tr>
+                                <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                            </tr>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Friday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Friday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
-        </div>
+            <div class="col-1-5">
+                <table class="table">
+                    <thead>
+                        <tr>Saturday</tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Where(x => x.Day == "Saturday"))
+                        {
+                            <tr>
+                                <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
+                            </tr>
+                        }
+                </table>
+            </div>
 
-        <div class="col-md-1">
-            <table class="table">
-                <thead>
-                    <tr>Saturday</tr>
-                </thead>
-                <tbody>
-                    @foreach (var x in Model.Where(x => x.Day == "Saturday"))
-                    {
-                        <tr>
-                            <td><a asp-controller="Home" asp-action="AddAppointment" asp-route-AppointmentID="@x.AppointmentID">@x.Time</a>
-                        </tr>
-                    }
-            </table>
         </div>
-
     </div>
 </div>
 

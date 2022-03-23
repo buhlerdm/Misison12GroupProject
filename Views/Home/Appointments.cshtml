@@ -18,6 +18,8 @@
         <td>Phone Number</td>
         <td>Appointment Day</td>
         <td>Appointment Time</td>    
+        <td></td> 
+        <td></td> 
     </thead>
 
     <tbody>
@@ -36,6 +38,8 @@
                     <td>@a.Time</td>
                 }
             }
+            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-groupID="@x.GroupId">Edit</a></td>
+            <td><a class="btn btn-danger"asp-controller="Home" asp-action="Delete" asp-route-groupID="@x.GroupId">Delete</a></td>
         </tr>
             }
 

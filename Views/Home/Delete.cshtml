@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Delete Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model GroupInfo
+
+<div class="text-center">
+
+    <h2>Comfirm Deletion</h2>
+    <h3>Are you sure that you want to delete appointment for @Model.GroupName? </h3>
+
+    <form method="post" asp-action="Delete">
+        <input class="btn btn-danger" type="submit" value="Delete" />
+        <br />
+        <br />
+        <a asp-controller="Home" asp-action="Appointments" class="btn btn-primary">Cancel</a>
+
+        <input type="hidden" asp-for="GroupId" />
+        <input type="hidden" asp-for="AppointmentID" />
+
+    </form>
+
+</div>
